@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Manajemen Gudang</title>
+    <title>Sistem Manajemen Gudang - Google Drive</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,12 +19,7 @@
             --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
         body {
             display: flex;
@@ -36,7 +31,6 @@
             background-attachment: fixed;
         }
 
-        /* Sidebar Kiri (Desktop) */
         .sidebar {
             width: 250px;
             background-color: rgba(43, 45, 66, 0.9);
@@ -54,15 +48,9 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .sidebar-header h2 {
-            font-size: 20px;
-            letter-spacing: 1px;
-        }
+        .sidebar-header h2 { font-size: 20px; letter-spacing: 1px; }
 
-        .menu {
-            list-style: none;
-            padding: 20px 0;
-        }
+        .menu { list-style: none; padding: 20px 0; }
 
         .menu li {
             padding: 15px 25px;
@@ -74,18 +62,12 @@
             font-weight: 400;
         }
 
-        .menu li:hover {
-            background-color: rgba(255,255,255,0.15);
-            border-left: 4px solid var(--primary);
-        }
-
-        .menu li.active {
+        .menu li:hover, .menu li.active {
             background-color: rgba(255,255,255,0.15);
             border-left: 4px solid var(--primary);
             font-weight: 600;
         }
 
-        /* Konten Utama Kanan */
         .main-content {
             flex: 1;
             display: flex;
@@ -104,34 +86,22 @@
             backdrop-filter: blur(8px);
         }
 
-        .topbar h2 {
-            color: var(--dark);
-            font-size: 20px;
-        }
+        .topbar h2 { color: var(--dark); font-size: 20px; }
 
-        .page-container {
-            padding: 25px 30px; 
-            display: none;
-        }
-
-        .page-container.active-page {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
+        .page-container { padding: 25px 30px; display: none; }
+        .page-container.active-page { display: block; animation: fadeIn 0.4s ease; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateX(-10px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* KARTU TRANSPARAN */
         .card {
             background: rgba(255, 255, 255, 0.68);
             border-radius: 12px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             width: 100%;
-            margin-left: 0;
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
@@ -143,25 +113,10 @@
             color: var(--dark);
         }
 
-        /* Form Styling */
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
+        .form-row { display: flex; gap: 20px; margin-bottom: 15px; }
+        .form-group { flex: 1; margin-bottom: 15px; }
 
-        .form-group {
-            flex: 1;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: var(--dark);
-            font-weight: 600;
-        }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--dark); font-weight: 600; }
 
         input, select {
             width: 100%;
@@ -180,41 +135,29 @@
             box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
         }
 
-        .autocomplete-container {
-            position: relative;
-            width: 100%;
-        }
-
+        .autocomplete-container { position: relative; width: 100%; }
         .autocomplete-items {
             position: absolute;
             border: 1px solid rgba(0,0,0,0.2);
             border-top: none;
             z-index: 99;
-            top: 100%;
-            left: 0;
-            right: 0;
+            top: 100%; left: 0; right: 0;
             background: rgba(255, 255, 255, 0.95);
             max-height: 200px;
             overflow-y: auto;
             border-radius: 0 0 6px 6px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            backdrop-filter: blur(8px);
         }
 
         .autocomplete-items div {
             padding: 12px 15px;
             cursor: pointer;
             border-bottom: 1px solid rgba(0,0,0,0.08);
-            transition: 0.2s;
             color: var(--dark);
             font-size: 14px;
         }
 
-        .autocomplete-items div:hover {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-        }
+        .autocomplete-items div:hover { background-color: var(--primary); color: white; font-weight: 600; }
 
         button.btn-submit {
             background-color: var(--primary);
@@ -231,13 +174,9 @@
             box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
         }
 
-        button.btn-submit:hover {
-            background-color: var(--primary-hover);
-        }
+        button.btn-submit:hover { background-color: var(--primary-hover); }
 
-        .table-responsive {
-            overflow-x: auto;
-        }
+        .table-responsive { overflow-x: auto; }
 
         table {
             width: 100%;
@@ -249,48 +188,15 @@
             overflow: hidden;
         }
 
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            white-space: nowrap;
-        }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 0, 0, 0.1); white-space: nowrap; }
+        th { background-color: rgba(244, 247, 246, 0.75); color: var(--dark); font-weight: 600; }
+        tbody tr:hover { background-color: rgba(255, 255, 255, 0.8); }
 
-        th {
-            background-color: rgba(244, 247, 246, 0.75);
-            color: var(--dark);
-            font-weight: 600;
-        }
+        .badge { background-color: rgba(6, 214, 160, 0.25); color: #048a66; padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; }
 
-        tbody tr:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        .badge {
-            background-color: rgba(6, 214, 160, 0.25);
-            color: #048a66;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .btn-aksi {
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: bold;
-            color: white;
-            transition: 0.2s;
-        }
-
+        .btn-aksi { border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; color: white; }
         .btn-edit { background-color: var(--warning); }
-        .btn-edit:hover { background-color: var(--warning-hover); }
-
-        .btn-hapus-item { background-color: var(--danger); margin-left: 5px;}
-        .btn-hapus-item:hover { background-color: var(--danger-hover); }
+        .btn-hapus-item { background-color: var(--danger); margin-left: 5px; }
 
         .btn-danger {
             background-color: var(--danger);
@@ -302,9 +208,7 @@
             font-weight: 600;
             float: right;
             margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(239, 71, 111, 0.3);
         }
-        .btn-danger:hover { background-color: var(--danger-hover); }
 
         .filter-box {
             display: flex;
@@ -319,181 +223,36 @@
             margin-left: auto;
         }
 
-        .filter-box label {
-            font-size: 12px;
-            margin-bottom: 4px;
-            white-space: nowrap;
-        }
+        .filter-box input[type="date"] { padding: 8px 10px; font-size: 13px; height: 38px; }
+        .filter-box button { background-color: var(--gray); padding: 0 12px; height: 38px; font-size: 12px; }
 
-        .filter-box input[type="date"] {
-            padding: 8px 10px;
-            font-size: 13px;
-            height: 38px;
-        }
-
-        .filter-box button {
-            background-color: var(--gray);
-            padding: 0 12px;
-            height: 38px;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-
-        /* Modal */
         .modal {
-            display: none; 
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-            padding: 15px;
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(5px); padding: 15px;
         }
 
         .modal-content {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 500px;
-            position: relative;
-            animation: slideDown 0.3s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 12px; width: 100%; max-width: 500px; position: relative;
         }
 
-        @keyframes slideDown {
-            from { transform: translateY(-30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 24px; font-weight: bold; color: var(--gray); cursor: pointer; }
 
-        .close-btn {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--gray);
-            cursor: pointer;
-        }
-        .close-btn:hover { color: var(--danger); }
-
-        /* Toast */
         #toast {
-            visibility: hidden;
-            min-width: 220px;
-            background-color: var(--success);
-            color: white;
-            text-align: center;
-            border-radius: 6px;
-            padding: 14px;
-            position: fixed;
-            z-index: 1001;
-            right: 20px;
-            bottom: 20px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            visibility: hidden; min-width: 220px; background-color: var(--success); color: white; text-align: center; border-radius: 6px; padding: 14px;
+            position: fixed; z-index: 1001; right: 20px; bottom: 20px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 20px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 20px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-        /* RESPONSIF */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                height: auto;
-                min-height: 100vh;
-                overflow-y: auto;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 15px;
-            }
-
-            .sidebar-header {
-                padding: 10px 0;
-                border-bottom: none;
-            }
-
-            .sidebar-header h2 {
-                font-size: 16px;
-            }
-
-            .menu {
-                display: flex;
-                padding: 5px 0;
-                gap: 5px;
-            }
-
-            .menu li {
-                padding: 8px 12px;
-                font-size: 13px;
-                border-left: none !important;
-                border-bottom: 3px solid transparent;
-                border-radius: 4px;
-            }
-
-            .menu li.active, .menu li:hover {
-                background-color: rgba(255,255,255,0.15);
-                border-left: none !important;
-                border-bottom: 3px solid var(--primary);
-            }
-
-            .main-content {
-                height: auto;
-                overflow-y: visible;
-            }
-
-            .topbar {
-                padding: 10px 15px;
-            }
-
-            .topbar h2 {
-                font-size: 16px;
-            }
-
-            .page-container {
-                padding: 15px;
-            }
-
-            .card {
-                padding: 20px 15px;
-            }
-
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .filter-box {
-                width: 100%;
-                margin-left: 0;
-                flex-direction: row;
-                align-items: flex-end;
-                justify-content: space-between;
-            }
-
-            .filter-box input[type="date"] {
-                width: 100%;
-            }
-
-            .btn-danger {
-                width: 100%;
-                float: none;
-                margin-top: 15px;
-            }
+            body { flex-direction: column; height: auto; min-height: 100vh; overflow-y: auto; }
+            .sidebar { width: 100%; height: auto; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 15px; }
+            .menu { display: flex; padding: 5px 0; gap: 5px; }
+            .menu li { padding: 8px 12px; font-size: 13px; border-left: none !important; border-bottom: 3px solid transparent; }
+            .menu li.active { border-bottom: 3px solid var(--primary); }
+            .filter-box { width: 100%; margin-left: 0; justify-content: space-between; }
+            .btn-danger { width: 100%; float: none; }
         }
     </style>
 </head>
@@ -505,20 +264,20 @@
         </div>
         <ul class="menu">
             <li id="menu-input" class="active" onclick="gantiMenu('input')">📝 Input</li>
-            <li id="menu-data" onclick="gantiMenu('data')">📊 Laporan</li>
+            <li id="menu-data" onclick="gantiMenu('data')">📊 Laporan Drive</li>
         </ul>
     </div>
 
     <div class="main-content">
         <div class="topbar">
             <h2 id="judul-halaman">Form Input Barang</h2>
-            <div class="user-info">👨‍💻 Admin</div>
+            <div class="user-info">☁️ Google Drive Connected</div>
         </div>
 
         <div id="page-input" class="page-container active-page">
             <div class="card">
                 <div class="card-header">
-                    <h3>Detail Barang Masuk</h3>
+                    <h3>Input Barang ke Google Drive</h3>
                 </div>
                 <form id="formBarang" autocomplete="off">
                     <div class="form-row">
@@ -553,7 +312,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit">💾 Simpan Data Barang</button>
+                    <button type="submit" class="btn-submit">💾 Simpan ke Google Drive</button>
                 </form>
             </div>
         </div>
@@ -561,7 +320,7 @@
         <div id="page-data" class="page-container">
             <div class="card">
                 <div class="card-header">
-                    <h3>Daftar Barang Masuk</h3>
+                    <h3>Laporan Tersimpan di Google Drive</h3>
                 </div>
                 <div class="filter-box">
                     <div>
@@ -585,27 +344,28 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="dataTabel"></tbody>
+                        <tbody id="dataTabel">
+                            <tr><td colspan="7" style="text-align:center; padding: 20px;">Menghubungkan ke Google Drive...</td></tr>
+                        </tbody>
                     </table>
                 </div>
-                <button id="btnHapusSemua" class="btn-danger">🗑️ Hapus Semua Data</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Edit -->
     <div id="modalEdit" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="tutupModal()">&times;</span>
-            <h3>✏️ Edit Data Barang</h3>
+            <h3>✏️ Edit Data</h3>
             <form id="formEdit">
-                <input type="hidden" id="editIndex">
+                <input type="hidden" id="editId">
                 <div class="form-group">
-                    <label>Tanggal Masuk</label>
+                    <label>Tanggal</label>
                     <input type="date" id="editTanggal" required>
                 </div>
                 <div class="form-group">
-                    <label>Nama PT / Supplier</label>
+                    <label>Nama PT</label>
                     <input type="text" id="editNamaPT" required>
                 </div>
                 <div class="form-group">
@@ -614,7 +374,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Jumlah (Qty)</label>
+                        <label>Jumlah</label>
                         <input type="number" id="editJumlah" min="1" required>
                     </div>
                     <div class="form-group">
@@ -634,7 +394,20 @@
     <div id="toast">✅ Berhasil!</div>
 
     <script>
-        let dataBarangMasuk = JSON.parse(localStorage.getItem('dataGudangPro')) || [];
+        // ⚠️ GANTI LINK DI BAWAH INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
+        const API_URL = 'https://script.google.com/macros/s/AKfycbx0uwoeXr_C4-L1c_QivkvAKyR3xEST_B_32aT1ZOe6AoW44lLcp7K1kaQgj37e96tT/exec';
+
+        let dataBarangMasuk = [];
+
+        async function ambilData() {
+            try {
+                const response = await fetch(API_URL);
+                dataBarangMasuk = await response.json();
+                tampilkanData();
+            } catch (error) {
+                tampilkanToast("⚠️ Gagal memuat data dari Google Drive", "var(--danger)");
+            }
+        }
 
         function tampilkanSaran(val) {
             const saranBox = document.getElementById('saranBox');
@@ -670,8 +443,8 @@
             } else {
                 document.getElementById('menu-data').classList.add('active');
                 document.getElementById('page-data').classList.add('active-page');
-                document.getElementById('judul-halaman').innerText = "Cek Laporan Barang";
-                tampilkanData();
+                document.getElementById('judul-halaman').innerText = "Laporan Google Drive";
+                ambilData();
             }
         }
 
@@ -690,12 +463,11 @@
             let dataTampil = filterTanggal ? dataBarangMasuk.filter(item => item.tanggal === filterTanggal) : dataBarangMasuk;
 
             if(dataTampil.length === 0) {
-                tabelBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 20px;">Data kosong.</td></tr>`;
+                tabelBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 20px;">Belum ada data di Google Drive.</td></tr>`;
                 return;
             }
 
             dataTampil.forEach(function(item, index) {
-                const originalIndex = dataBarangMasuk.indexOf(item);
                 const baris = document.createElement('tr');
                 baris.innerHTML = `
                     <td>${index + 1}</td>
@@ -705,8 +477,8 @@
                     <td>${item.jumlah}</td>
                     <td><span class="badge">${item.satuan}</span></td>
                     <td>
-                        <button onclick="bukaModalEdit(${originalIndex})" class="btn-aksi btn-edit">✏️ Edit</button>
-                        <button onclick="hapusSatuData(${originalIndex})" class="btn-aksi btn-hapus-item">🗑️ Hapus</button>
+                        <button onclick="bukaModalEdit('${item.id}')" class="btn-aksi btn-edit">✏️ Edit</button>
+                        <button onclick="hapusSatuData('${item.id}')" class="btn-aksi btn-hapus-item">🗑️ Hapus</button>
                     </td>
                 `;
                 tabelBody.appendChild(baris);
@@ -718,7 +490,7 @@
             tampilkanData();
         }
 
-        document.getElementById('formBarang').addEventListener('submit', function(event) {
+        document.getElementById('formBarang').addEventListener('submit', async function(event) {
             event.preventDefault(); 
             const dataBaru = {
                 tanggal: document.getElementById('tanggal').value,
@@ -727,16 +499,25 @@
                 jumlah: document.getElementById('jumlahBarang').value,
                 satuan: document.getElementById('satuan').value
             };
-            dataBarangMasuk.push(dataBaru);
-            localStorage.setItem('dataGudangPro', JSON.stringify(dataBarangMasuk));
-            document.getElementById('formBarang').reset();
-            tampilkanToast("✅ Data berhasil disimpan!");
-            setTimeout(function() { gantiMenu('data'); }, 500);
+
+            tampilkanToast("Sedang menyimpan...", "var(--warning)");
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(dataBaru)
+                });
+                document.getElementById('formBarang').reset();
+                tampilkanToast("✅ Tersimpan di Google Drive!");
+                setTimeout(function() { gantiMenu('data'); }, 500);
+            } catch (error) {
+                tampilkanToast("❌ Gagal menyimpan", "var(--danger)");
+            }
         });
 
-        function bukaModalEdit(index) {
-            const data = dataBarangMasuk[index];
-            document.getElementById('editIndex').value = index;
+        function bukaModalEdit(id) {
+            const data = dataBarangMasuk.find(item => item.id == id);
+            if (!data) return;
+            document.getElementById('editId').value = data.id;
             document.getElementById('editTanggal').value = data.tanggal;
             document.getElementById('editNamaPT').value = data.namaPT;
             document.getElementById('editNamaBarang').value = data.namaBarang;
@@ -747,41 +528,49 @@
 
         function tutupModal() { document.getElementById('modalEdit').style.display = 'none'; }
 
-        document.getElementById('formEdit').addEventListener('submit', function(event) {
+        document.getElementById('formEdit').addEventListener('submit', async function(event) {
             event.preventDefault();
-            const index = document.getElementById('editIndex').value;
-            dataBarangMasuk[index] = {
+            const dataUpdate = {
+                action: 'update',
+                id: document.getElementById('editId').value,
                 tanggal: document.getElementById('editTanggal').value,
                 namaPT: document.getElementById('editNamaPT').value,
                 namaBarang: document.getElementById('editNamaBarang').value,
                 jumlah: document.getElementById('editJumlah').value,
                 satuan: document.getElementById('editSatuan').value
             };
-            localStorage.setItem('dataGudangPro', JSON.stringify(dataBarangMasuk));
-            tampilkanData();
-            tutupModal();
-            tampilkanToast("✅ Data berhasil diperbarui!", "var(--warning)");
+
+            tampilkanToast("Memperbarui...", "var(--warning)");
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(dataUpdate)
+                });
+                ambilData();
+                tutupModal();
+                tampilkanToast("✅ Berhasil diperbarui!", "var(--warning)");
+            } catch (error) {
+                tampilkanToast("❌ Gagal memperbarui", "var(--danger)");
+            }
         });
 
-        function hapusSatuData(index) {
-            if (confirm("Yakin ingin menghapus?")) {
-                dataBarangMasuk.splice(index, 1);
-                localStorage.setItem('dataGudangPro', JSON.stringify(dataBarangMasuk));
-                tampilkanData();
-                tampilkanToast("🗑️ Data telah dihapus!", "var(--danger)");
+        async function hapusSatuData(id) {
+            if (confirm("Yakin ingin menghapus data ini dari Google Drive?")) {
+                tampilkanToast("Menghapus...", "var(--warning)");
+                try {
+                    await fetch(API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'delete', id: id })
+                    });
+                    ambilData();
+                    tampilkanToast("🗑️ Data telah dihapus!", "var(--danger)");
+                } catch (error) {
+                    tampilkanToast("❌ Gagal menghapus", "var(--danger)");
+                }
             }
         }
 
-        document.getElementById('btnHapusSemua').addEventListener('click', function() {
-            if(dataBarangMasuk.length > 0 && confirm("Hapus SEMUA data?")) {
-                dataBarangMasuk = [];
-                localStorage.removeItem('dataGudangPro');
-                tampilkanData();
-                tampilkanToast("🗑️ Semua data dikosongkan!", "var(--danger)");
-            }
-        });
-
-        tampilkanData();
+        ambilData();
     </script>
 </body>
 </html>
